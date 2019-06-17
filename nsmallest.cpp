@@ -9,6 +9,10 @@ py::array_t<T> nsmallest(const py::array_t<T> a, int k) {
     const auto data = a.data();
     const auto n = a.size();
 
+    if (n < k) {
+        k = n;
+    }
+
     std::priority_queue<T> pq;
 
     // k log(k)
@@ -39,6 +43,10 @@ template <typename T>
 py::array_t<int> argnsmallest(const py::array_t<T> a, int k) {
     const auto data = a.data();
     const auto n = a.size();
+
+    if (n < k) {
+        k = n;
+    }
 
     std::priority_queue<std::pair<T, int>> pq;
 
